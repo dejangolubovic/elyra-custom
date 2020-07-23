@@ -43,5 +43,9 @@ RUN python -m pip install --upgrade pip && \
 
 WORKDIR /home/jovyan/work
 
-CMD ["/usr/local/bin/start-elyra.sh"]
+#CMD ["/usr/local/bin/start-elyra.sh"]
 
+CMD ["sh", "-c", \
+     "jupyter lab --notebook-dir=/home/jovyan --ip=0.0.0.0 --no-browser \
+      --allow-root --port=8888 --LabApp.token='' --LabApp.password='' \
+      --LabApp.allow_origin='*' --LabApp.base_url=${NB_PREFIX}"]
